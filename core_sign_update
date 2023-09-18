@@ -136,7 +136,8 @@ i=1
 signature_sizes=""
 for key in "${private_keys[@]}"; do
 	if [[ "${key}" == pkcs11* ]]; then
-		openssl rsautl -engine pkcs11 -pkcs -sign -inkey ${key} -keyform engine -in update.pkcs11-padhash -out update.sig.${i}
+		# NOTE: When we will use OpenSSL 3: use the following URI: pkcs11:id=%${ID}?pin-source=file:/tmp/pin
+		openssl pkeyutl -engine pkcs11 -sign -keyform engine -inkey "${key}" -in update.pkcs11-padhash -out "update.sig.${i}"
 	elif [[ "${key}" == fero* ]]; then
 		fero-client \
 			--address $FLAGS_signing_server_address \
