@@ -24,6 +24,6 @@ src_install() {
 
 	# shim keys
 	newins "${FILESDIR}/shim.key" shim.key
-  	newins "${FILESDIR}/shim.der" shim.der
-  	newins "${FILESDIR}/shim.pem" shim.pem
+  newins "${FILESDIR}/shim.der" shim.der
+  newins "${FILESDIR}/shim.pem" shim.pem
 }
