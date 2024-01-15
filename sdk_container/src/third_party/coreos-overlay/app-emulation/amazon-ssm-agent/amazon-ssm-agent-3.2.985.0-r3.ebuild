@@ -31,7 +31,7 @@ src_compile() {
 	# set agent release version
 	BRAZIL_PACKAGE_VERSION=${PV} ${EGO} run ./agent/version/versiongenerator/version-gen.go
 	# build all the tools
-	if [[ "${ARCH}" != "amd64" ]]; then
+	if [[ "${ARCH}" == "arm64" ]]; then
 		emake build-arm64
 	else
 		emake build-linux
